@@ -25,12 +25,12 @@ jobs:
         run: dotnet build
       # Run API tests
       - name: Run API tests
-        run: dotnet test ${{github.workspace}}/tests/Library.Tests.Api/Library.Tests.Api.csproj --logger "nunit;LogFileName=test_results.xml" --results-directory ./bin/Debug/net8.0/test-results
+        run: dotnet test ${{github.workspace}}/tests/Library.Tests.Api/Library.Tests.Api.csproj --logger "trx;LogFileName=test_results.trx" --results-directory ./bin/Debug/net8.0/test-results
 
       # Upload test results as artifacts
       - name: Upload test results
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3.2.1-node20
         with:
           name: test-results
           path: ${{github.workspace}}/tests/Library.Tests.Api/bin/Debug/net8.0/test-results
@@ -47,5 +47,5 @@ jobs:
           artifact: test-results
           name: test_results.xml
           path: 'test_results.xml'
-          reporter: dotnet-nunit
+          reporter: dotnet-trx
           fail-on-error: false

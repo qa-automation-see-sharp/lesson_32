@@ -35,6 +35,6 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Ensure browsers are installed
-      run: pwsh /home/runner/work/lesson_32/lesson_32/tests/Library.Tests.Ui/bin/Debug/net8.0/playwright.ps1 install --with-deps
+      run: pwsh home/runner/work/lesson_32/lesson_32/tests/Library.Tests.Ui/bin/Debug/net8.0/playwright.ps1 install --with-deps
     - name: Run UI tests
       run: dotnet test /home/runner/work/lesson_32/lesson_32/tests/Library.Tests.Ui/Library.Tests.Ui.csproj

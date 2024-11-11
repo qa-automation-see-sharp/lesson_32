@@ -23,9 +23,6 @@ jobs:
       # Restore .NET dependencies
       - name: Restore dependencies
         run: dotnet restore
-        
-      - name: Check github.workspace
-        run: echo ${{github.workspace}}
 
       # Build the project
       - name: Build
@@ -37,7 +34,7 @@ jobs:
         
       # Run NUnit Playwright tests
       - name: Run UI tests
-        run: dotnet test ${{github.workspace}}/tests/Library.Tests.Ui/Library.Tests.Ui.csproj --logger "trx;LogFileName=test-results.trx" --results-directory ${{github.workspace}}tests/Library.Tests.Ui/bin/Debug/net8.0/test-results
+        run: ${{github.workspace}}tests/Library.Tests.Ui/Library.Tests.Ui.csproj --logger "nunit;LogFileName=test_results.xml" --results-directory ./test-results
         
       # Upload test results as artifacts
       - name: Upload test results
@@ -53,8 +50,8 @@ jobs:
         if: always() # Always run this step, even if previous steps fail
         with:
           artifact: test-results
-          reporter: dotnet-trx
-          path: 'test-results/test-results.trx'
-          name: test-results.trx
+          reporter: dotnet-nunit
+          path: 'test-results/test-results.xml'
+          name: test-results.xml
           list-tests: 'all'
           fail-on-error: 'false'

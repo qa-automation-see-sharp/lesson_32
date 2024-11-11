@@ -67,6 +67,6 @@ jobs:
         if: always() # Always run this step, even if previous steps fail
         with:
           name: NUnit Tests
-          path: ./TestResults/test_results.xml
+          path: /home/runner/work/lesson_32/lesson_32/tests/Library.Tests.Ui/bin/Debug/net8.0/test-results/test_results.xml
           reporter: junit
           fail-on-error: false

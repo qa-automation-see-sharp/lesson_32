@@ -46,5 +46,5 @@ jobs:
           artifact: test-results
           name: test_results.trx
           path: 'test_results.trx'
-          reporter: dotnet-trx
+          reporter: dotnet-nunit
           fail-on-error: false

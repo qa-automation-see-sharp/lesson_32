@@ -32,4 +32,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: test-results
-          path: /home/runner/work/lesson_32/lesson_32/tests/Library.Tests.Ui/bin/Debug/net8.0/test-results
+          path: /home/runner/work/lesson_32/lesson_32/tests/Library.Tests.Api/bin/Debug/net8.0/test-results

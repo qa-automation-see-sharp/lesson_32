@@ -51,7 +51,7 @@ jobs:
 
       # Run NUnit Playwright tests and generate JUnit report
       - name: Run UI tests
-        run: dotnet test /home/runner/work/lesson_32/lesson_32/tests/Library.Tests.Ui/Library.Tests.Ui.csproj --logger "trx;LogFileName=test_results.trx" --results-directory ./test-results --logger "junit;LogFileName=test_results.xml"
+        run: dotnet test /home/runner/work/lesson_32/lesson_32/tests/Library.Tests.Ui/Library.Tests.Ui.csproj --logger "trx;LogFileName=test_results.trx" --results-directory ./test-results
 
       # Upload test results as artifacts
       - name: Upload test results

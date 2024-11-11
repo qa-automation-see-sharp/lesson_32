@@ -19,7 +19,7 @@ public class LinksPageTests : PageTest
         linksPage = await _browserSetUp
             .WithBrowser(Chromium)
             .WithChannel("chrome")
-            .InHeadlessMode(false)
+            .InHeadlessMode(true)
             .WithSlowMo(100)
             .WithTimeout(10000)
             .WithVideoSize(1900, 1080)

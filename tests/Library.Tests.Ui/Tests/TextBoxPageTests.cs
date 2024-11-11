@@ -16,7 +16,7 @@ public class TextBoxPageTests
     {
         Page = await _browserSetUp
             .WithBrowser(Chromium)
-            .InHeadlessMode(false)
+            .InHeadlessMode(true)
             .WithChannel("chrome")
             .WithSlowMo(100)
             .WithTimeout(10000)

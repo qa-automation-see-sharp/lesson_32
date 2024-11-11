@@ -26,3 +26,10 @@ jobs:
       # Run API tests
       - name: Run API tests
         run: dotnet test /home/runner/work/lesson_32/lesson_32/tests/Library.Tests.Api/Library.Tests.Api.csproj --logger "trx;LogFileName=test_results.trx" --results-directory /home/runner/work/lesson_32/lesson_32/tests/Library.Tests.Api/bin/Debug/net8.0/test-results
+      # Upload test results as artifacts
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: /home/runner/work/lesson_32/lesson_32/tests/Library.Tests.Ui/bin/Debug/net8.0/test-results

@@ -22,6 +22,7 @@ public class BrokenLinksAndImagesPageTests
             .InHeadlessMode(true)
             .WithSlowMo(100)
             .WithTimeout(10000)
+            .WithViewportSize(1900, 1080)
             .WithVideoSize(1900, 1080)
             .SaveVideo("videos/")
             .WithArgs("--start-maximized")

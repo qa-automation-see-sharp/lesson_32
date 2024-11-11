@@ -55,7 +55,7 @@ jobs:
         if: always() # Always run this step, even if previous steps fail
         with:
           artifact: test-results
-          name: test_results.xml
-          path: 'test-results/test_results.xml'
+          name: test_results.trx
+          path: 'test-results/test_results.trx'
           reporter: dotnet-trx
           fail-on-error: false

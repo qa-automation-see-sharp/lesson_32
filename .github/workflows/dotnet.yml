@@ -35,7 +35,7 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Run API tests
-      run: dotnet test /home/runner/work/lesson_32/lesson_32/tests/Library.Tests.Api/Library.Tests.Api.csproj --no-build --verbosity normal
+      run: dotnet test /home/runner/work/lesson_32/lesson_32/tests/Library.Tests.Api/Library.Tests.Api.csproj
   ui-tests:
     runs-on: ubuntu-latest
     needs: build
@@ -49,4 +49,4 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Run UI tests
-      run: dotnet test /home/runner/work/lesson_32/lesson_32/tests/Library.Tests.Ui/Library.Tests.Ui.csproj --no-build --verbosity normal
+      run: dotnet test /home/runner/work/lesson_32/lesson_32/tests/Library.Tests.Ui/Library.Tests.Ui.csproj

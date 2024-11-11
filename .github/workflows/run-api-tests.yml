@@ -25,14 +25,14 @@ jobs:
         run: dotnet build
       # Run API tests
       - name: Run API tests
-        run: dotnet test ${{github.workspace}}tests/Library.Tests.Api/Library.Tests.Api.csproj --logger "nunit;LogFileName=test_results.xml" --results-directory ./test-results
+        run: dotnet test ${{github.workspace}}/tests/Library.Tests.Api/Library.Tests.Api.csproj --logger "nunit;LogFileName=test_results.xml" --results-directory ./test-results
       # Upload test results as artifacts
       - name: Upload test results
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: test-results
-          path: ${{github.workspace}}tests/Library.Tests.Api/bin/Debug/net8.0/test-results
+          path: ${{github.workspace}}/tests/Library.Tests.Api/bin/Debug/net8.0/test-results
   test-results:
     name: Get Test Results
     runs-on: ubuntu-latest

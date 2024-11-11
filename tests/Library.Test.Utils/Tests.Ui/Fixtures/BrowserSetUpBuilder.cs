@@ -40,14 +40,14 @@ public class BrowserSetUpBuilder
     public async Task StopTracing(string path)
     {
         var currentDirectory = Directory.GetCurrentDirectory();
-        var finalPath = Path.Combine(currentDirectory, _date, _time, path);
+        var finalPath = Path.Combine(currentDirectory, "test-results", path);
         await Context!.Tracing.StopAsync(new() { Path = finalPath });
     }
 
     public async Task Screenshot(string testSuiteName, string screenshotName)
     {
         var currentDirectory = Directory.GetCurrentDirectory();
-        var finalPath = Path.Combine(currentDirectory, _date, _time, testSuiteName, screenshotName + ".png");
+        var finalPath = Path.Combine(currentDirectory, "test-results", testSuiteName, screenshotName + ".png");
         await Page!.ScreenshotAsync(new() { Path = finalPath });
     }
 
@@ -121,7 +121,7 @@ public class BrowserSetUpBuilder
 
     public BrowserSetUpBuilder SaveVideo(string path)
     {
-        _browserNewContextOptions.RecordVideoDir = $"{_date}/{_time}/" + path;
+        _browserNewContextOptions.RecordVideoDir = $"test-results/" + path;
         return this;
     }
 

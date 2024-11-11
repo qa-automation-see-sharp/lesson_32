@@ -26,7 +26,9 @@ jobs:
       # Run API tests
       - name: Run API tests
         run: dotnet test ${{github.workspace}}/tests/Library.Tests.Api/Library.Tests.Api.csproj --logger "trx;LogFileName=test_results.trx" --results-directory ./bin/Debug/net8.0/test-results
-
+        
+      - name: chek if test-results directory exists
+        run: ls -la ${{github.workspace}}/tests/Library.Tests.Api/bin/Debug/net8.0/test-results
       # Upload test results as artifacts
       - name: Upload test results
         if: always()

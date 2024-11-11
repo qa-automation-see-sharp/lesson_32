@@ -22,7 +22,25 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore
       - name: Run API tests
-        run: dotnet test /home/runner/work/lesson_32/lesson_32/tests/Library.Tests.Api/Library.Tests.Api.csproj
+        run: dotnet test /home/runner/work/lesson_32/lesson_32/tests/Library.Tests.Api/Library.Tests.Api.csproj --logger "trx;LogFileName=test_results.trx" --results-directory ./test-results
+
+      # Upload test results as artifacts
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: /home/runner/work/lesson_32/lesson_32/tests/Library.Tests.Ui/bin/Debug/net8.0/test-results
+            
+      # Display test results using dorny/test-reporter
+      - name: Publish Test Report
+        uses: dorny/test-reporter@v1
+        if: always() # Always run this step, even if previous steps fail
+        with:
+          name: NUnit Tests
+          path: /home/runner/work/lesson_32/lesson_32/tests/Library.Tests.Ui/bin/Debug/net8.0/test-results/test_results.xml
+          reporter: dotnet-trx
+          fail-on-error: false
   
   ui-tests:
     runs-on: ubuntu-latest
@@ -68,5 +86,5 @@ jobs:
         with:
           name: NUnit Tests
           path: /home/runner/work/lesson_32/lesson_32/tests/Library.Tests.Ui/bin/Debug/net8.0/test-results/test_results.xml
-          reporter: junit
+          reporter: dotnet-trx
           fail-on-error: false

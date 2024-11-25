@@ -47,10 +47,11 @@ jobs:
       # Display test results using dorny/test-reporter
       - name: Publish Test Report
         uses: dorny/test-reporter@v1.9.1
-        if: success() || failure()  # Always run this step, even if previous steps fail
+        if: always()  # Always run this step, even if previous steps fail
         with:
           artifact: test-results
           name: UI tests results
           reporter: dotnet-trx
           path: './test-results/test-results.trx'
-          fail-on-error: 'false'
+          fail-on-error: false
+          fail-on-empty: false

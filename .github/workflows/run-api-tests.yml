@@ -4,6 +4,14 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+permissions:
+  contents: read
+  actions: read
+  checks: write
+  issues: write
+  pull-requests: write
+  statuses: write
+  
 jobs:
   run-api-tests:
     name: Run API Tests
@@ -40,8 +48,8 @@ jobs:
     steps:
       # Display test results using dorny/test-reporter
       - name: Publish Test Report
-        uses: dorny/test-reporter@v1
-        if: always() # Always run this step, even if previous steps fail
+        uses: dorny/test-reporter@v1.9.1
+        if: success() || failure()  # Always run this step, even if previous steps fail
         with:
           artifact: test-results
           name: api tests results

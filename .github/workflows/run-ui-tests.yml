@@ -43,6 +43,7 @@ jobs:
     name: Get Test Results
     runs-on: ubuntu-latest
     needs: run-ui-tests
+    if: always()
     steps:
       # Display test results using dorny/test-reporter
       - name: Publish Test Report

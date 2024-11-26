@@ -4,6 +4,7 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+
 permissions:
   contents: read
   actions: read
@@ -11,7 +12,7 @@ permissions:
   issues: write
   pull-requests: write
   statuses: write
-  
+
 jobs:
   run-api-tests:
     name: Run API Tests
@@ -41,10 +42,12 @@ jobs:
         with:
           name: test-results
           path: ${{github.workspace}}/tests/Library.Tests.Api/bin/Debug/net8.0/test-results
+
   test-results:
     name: Get Test Results
     runs-on: ubuntu-latest
     needs: run-api-tests
+    if: always()
     steps:
       # Display test results using dorny/test-reporter
       - name: Publish Test Report
@@ -56,3 +59,4 @@ jobs:
           path: './test-results.trx'
           reporter: dotnet-trx
           fail-on-error: false
+          fail-on-empty: false

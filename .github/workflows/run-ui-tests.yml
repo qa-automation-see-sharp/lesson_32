@@ -53,6 +53,6 @@ jobs:
           artifact: test-results
           name: UI tests results
           reporter: dotnet-trx
-          path: './test-results/test-results.trx'
+          path: './test-results.trx'
           fail-on-error: false
           fail-on-empty: false
